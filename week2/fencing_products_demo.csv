@@ -1,0 +1,51 @@
+product_id,product_name,category,material,height_ft,width_ft,color_or_finish,price_usd,stock_status,description
+FSG-001,Cedar Privacy Fence Panel,Panel,Western Red Cedar,6.0,8.0,Natural Cedar,129.99,In Stock,Premium western red cedar privacy panel ideal for residential backyard fencing.
+FSG-002,Cedar Dog-Ear Fence Board,Board,Western Red Cedar,6.0,0.5,Natural Cedar,4.25,In Stock,Traditional dog-ear cedar picket used for classic wood privacy fences.
+FSG-003,Pressure-Treated Pine Fence Board,Board,Pressure Treated Pine,6.0,0.5,Green Treated,3.1,In Stock,Affordable treated pine board designed for long-lasting outdoor fences.
+FSG-004,Black Aluminum Pool Fence Panel,Panel,Aluminum,5.0,6.0,Black Powder Coat,189.99,In Stock,Decorative aluminum panel commonly used for pool enclosures and safety fencing.
+FSG-005,Aluminum Fence Gate 48in,Gate,Aluminum,4.0,4.0,Black Powder Coat,249.0,In Stock,Pre-assembled aluminum gate compatible with aluminum fence panel systems.
+FSG-006,Vinyl Privacy Fence Panel,Panel,PVC Vinyl,6.0,8.0,White,179.99,In Stock,Maintenance-free vinyl privacy panel resistant to moisture and rot.
+FSG-007,Vinyl Ranch Rail Fence,Panel,PVC Vinyl,4.0,8.0,White,159.99,In Stock,Two-rail ranch style vinyl fence designed for large properties and farms.
+FSG-008,Steel Fence Post 8ft,Post,Galvanized Steel,8.0,0.0,Galvanized,22.5,In Stock,Heavy-duty galvanized steel post designed for chain link fencing systems.
+FSG-009,Chain Link Fence Fabric 4ft Roll,Roll,Galvanized Steel,4.0,50.0,Galvanized,129.99,In Stock,Galvanized chain link mesh roll used for perimeter and security fencing.
+FSG-010,Black Chain Link Fence Fabric 6ft Roll,Roll,Galvanized Steel,6.0,50.0,Black Vinyl Coated,189.99,In Stock,Black vinyl-coated chain link fencing for residential yards.
+FSG-011,Ornamental Steel Fence Panel,Panel,Welded Steel,6.0,6.0,Black Powder Coat,229.99,In Stock,Decorative ornamental steel fence panel with spear-top pickets.
+FSG-012,Cedar Lattice Fence Panel,Panel,Western Red Cedar,6.0,8.0,Natural Cedar,149.99,In Stock,Decorative lattice fence panel offering privacy with airflow.
+FSG-013,Bamboo Garden Fence Panel,Panel,Bamboo,4.0,6.0,Natural Bamboo,89.99,In Stock,Eco-friendly bamboo panel used for garden fencing and landscaping.
+FSG-014,Split Rail Fence Rail,Rail,Western Red Cedar,3.0,10.0,Natural Cedar,34.99,In Stock,Traditional split rail fence component for rustic property boundaries.
+FSG-015,Split Rail Fence Post,Post,Western Red Cedar,4.0,0.0,Natural Cedar,39.99,In Stock,Pre-notched cedar post used in split rail fencing systems.
+FSG-016,Vinyl Fence Post 8ft,Post,PVC Vinyl,8.0,0.0,White,44.99,In Stock,Structural vinyl fence post compatible with most vinyl fence panels.
+FSG-017,Aluminum Fence Post 6ft,Post,Aluminum,6.0,0.0,Black Powder Coat,59.99,In Stock,Heavy-duty aluminum fence post designed for ornamental aluminum systems.
+FSG-018,Steel Security Fence Panel,Panel,Welded Steel,8.0,8.0,Black Powder Coat,349.99,Limited Stock,High-security steel fencing panel designed for commercial applications.
+FSG-019,Cedar Shadowbox Fence Panel,Panel,Western Red Cedar,6.0,8.0,Natural Cedar,139.99,In Stock,Shadowbox style cedar panel allowing airflow and partial visibility.
+FSG-020,Horizontal Cedar Fence Board,Board,Western Red Cedar,6.0,1.0,Natural Cedar,5.2,In Stock,Premium cedar board ideal for modern horizontal fence designs.
+FSG-021,Vinyl Picket Fence Panel,Panel,PVC Vinyl,4.0,8.0,White,129.99,In Stock,Classic white picket fence panel commonly used for front yards.
+FSG-022,Aluminum Garden Fence Panel,Panel,Aluminum,4.0,6.0,Black Powder Coat,149.99,In Stock,Decorative aluminum panel designed for garden enclosures.
+FSG-023,Chain Link Fence Post 10ft,Post,Galvanized Steel,10.0,0.0,Galvanized,27.99,In Stock,Extra-tall steel post used for chain link security fencing.
+FSG-024,Black Vinyl Chain Link Post,Post,Steel,8.0,0.0,Black Vinyl Coated,29.99,In Stock,Black-coated steel fence post designed for vinyl-coated chain link fences.
+FSG-025,Cedar Fence Post 8ft,Post,Western Red Cedar,8.0,0.0,Natural Cedar,31.99,In Stock,Rot-resistant cedar fence post for wood fencing systems.
+FSG-026,Vinyl Privacy Gate 6ft,Gate,PVC Vinyl,6.0,4.0,White,289.99,In Stock,Matching gate designed for vinyl privacy fencing systems.
+FSG-027,Steel Anti-Climb Fence Panel,Panel,Welded Steel,8.0,8.0,Black Powder Coat,399.99,Limited Stock,Anti-climb welded mesh fence panel for high-security installations.
+FSG-028,Cedar Fence Cap,Accessory,Western Red Cedar,0.5,0.5,Natural Cedar,3.99,In Stock,Decorative cap used to protect and finish fence posts.
+FSG-029,Aluminum Fence Gate 60in,Gate,Aluminum,5.0,5.0,Black Powder Coat,279.99,In Stock,Wide aluminum gate suitable for driveway or equipment access.
+FSG-030,Pressure Treated Fence Post 8ft,Post,Pressure Treated Pine,8.0,0.0,Green Treated,19.99,In Stock,Cost-effective treated wood post used in standard wood fencing.
+FSG-031,Vinyl Lattice Top Fence Panel,Panel,PVC Vinyl,6.0,8.0,White,199.99,In Stock,Decorative vinyl privacy fence panel with lattice top.
+FSG-032,Chain Link Tension Wire,Accessory,Steel,0.0,50.0,Galvanized,24.99,In Stock,Tension wire used to reinforce chain link fence bottoms.
+FSG-033,Steel Fence Gate 6ft,Gate,Welded Steel,6.0,4.0,Black Powder Coat,319.99,In Stock,Heavy-duty steel gate designed for security fencing.
+FSG-034,Aluminum Pool Fence Gate,Gate,Aluminum,5.0,4.0,Black Powder Coat,259.99,In Stock,Self-closing pool safety gate compatible with aluminum pool fences.
+FSG-035,Cedar Fence Rail,Rail,Western Red Cedar,2.0,8.0,Natural Cedar,14.99,In Stock,Horizontal cedar rail used for wood fence construction.
+FSG-036,Vinyl Fence Rail,Rail,PVC Vinyl,2.0,8.0,White,18.99,In Stock,Vinyl rail used for picket and ranch rail fence systems.
+FSG-037,Chain Link Fence Gate Kit,Gate Kit,Steel,4.0,4.0,Galvanized,159.99,In Stock,Complete chain link gate kit including frame and hardware.
+FSG-038,Decorative Steel Fence Finial,Accessory,Steel,0.0,0.0,Black Powder Coat,6.99,In Stock,Ornamental finial designed for decorative steel fencing.
+FSG-039,Bamboo Privacy Fence Roll,Roll,Bamboo,6.0,16.0,Natural Bamboo,79.99,In Stock,Flexible bamboo fencing roll ideal for garden privacy.
+FSG-040,Steel Fence Post 12ft,Post,Galvanized Steel,12.0,0.0,Galvanized,35.99,Limited Stock,Extra-long galvanized steel post for tall chain link fences.
+FSG-041,Aluminum Fence Panel Bronze,Panel,Aluminum,5.0,6.0,Bronze Powder Coat,199.99,In Stock,Decorative bronze aluminum fence panel for upscale residential properties.
+FSG-042,White Vinyl Fence Gate 48in,Gate,PVC Vinyl,4.0,4.0,White,239.99,In Stock,Standard white vinyl gate designed for picket fence systems.
+FSG-043,Cedar Garden Fence Panel,Panel,Western Red Cedar,4.0,6.0,Natural Cedar,109.99,In Stock,Short cedar fence panel perfect for gardens and landscaping.
+FSG-044,Steel Security Fence Gate 8ft,Gate,Welded Steel,8.0,6.0,Black Powder Coat,449.99,Limited Stock,High-security steel gate for industrial fencing installations.
+FSG-045,Pressure Treated Fence Rail,Rail,Pressure Treated Pine,2.0,8.0,Green Treated,9.99,In Stock,Pressure-treated rail used in wood fence framing.
+FSG-046,Black Aluminum Fence Panel 6ft,Panel,Aluminum,6.0,6.0,Black Powder Coat,209.99,In Stock,Tall aluminum fence panel for residential or commercial fencing.
+FSG-047,Vinyl Ranch Fence Post,Post,PVC Vinyl,5.0,0.0,White,49.99,In Stock,Vinyl post designed for ranch rail fence installations.
+FSG-048,Galvanized Fence Tension Band,Accessory,Steel,0.0,0.0,Galvanized,1.99,In Stock,Metal tension band used to secure chain link fencing to posts.
+FSG-049,Steel Fence Post Cap,Accessory,Steel,0.0,0.0,Galvanized,2.49,In Stock,Protective cap for steel fence posts.
+FSG-050,Aluminum Fence Corner Post,Post,Aluminum,6.0,0.0,Black Powder Coat,64.99,In Stock,Corner post designed for aluminum fence installations.
