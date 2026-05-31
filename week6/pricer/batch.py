@@ -1,15 +1,15 @@
-import os
-from groq import Groq
-from dotenv import load_dotenv
-from pathlib import Path
 import json
+import os
 import pickle
+from functools import lru_cache
+from pathlib import Path
+
+from anthropic import Anthropic
+from dotenv import load_dotenv
 from tqdm.notebook import tqdm
 
-load_dotenv(override=True)
-groq = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-
-MODEL = "openai/gpt-oss-20b"
+MODEL = "claude-haiku-4-5"
+MAX_TOKENS = 200
 BATCHES_FOLDER = "batches"
 OUTPUT_FOLDER = "output"
 state = Path("batches.pkl")
@@ -20,6 +20,15 @@ Category: eg Electronics
 Brand: Brand name
 Description: 1 sentence description
 Details: 1 sentence on features"""
+
+
+@lru_cache(maxsize=1)
+def client() -> Anthropic:
+    load_dotenv(override=True)
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise ValueError("Set ANTHROPIC_API_KEY before running batch preprocessing.")
+    return Anthropic(api_key=api_key)
 
 
 class Batch:
@@ -35,6 +44,7 @@ class Batch:
         self.file_id = None
         self.batch_id = None
         self.output_file_id = None
+        self.requests_payload = None
         self.done = False
         folder = Path("lite") if lite else Path("full")
         self.batches = folder / BATCHES_FOLDER
@@ -42,22 +52,22 @@ class Batch:
         self.batches.mkdir(parents=True, exist_ok=True)
         self.output.mkdir(parents=True, exist_ok=True)
 
-    def make_jsonl(self, item):
-        body = {
+    def make_request(self, item):
+        params = {
             "model": MODEL,
+            "max_tokens": MAX_TOKENS,
+            "system": SYSTEM_PROMPT,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": item.full},
             ],
-            "reasoning_effort": "low",
         }
-        line = {
+        return {
             "custom_id": str(item.id),
-            "method": "POST",
-            "url": "/v1/chat/completions",
-            "body": body,
+            "params": params,
         }
-        return json.dumps(line)
+
+    def make_jsonl(self, item):
+        return json.dumps(self.make_request(item))
 
     def make_file(self):
         batch_file = self.batches / self.filename
@@ -68,38 +78,73 @@ class Batch:
 
     def send_file(self):
         batch_file = self.batches / self.filename
-        with batch_file.open("rb") as f:
-            response = groq.files.create(file=f, purpose="batch")
-        self.file_id = response.id
+        with batch_file.open("r") as f:
+            self.requests_payload = [json.loads(line) for line in f if line.strip()]
+        self.file_id = str(batch_file)
 
     def submit_batch(self):
-        response = groq.batches.create(
-            completion_window="24h",
-            endpoint="/v1/chat/completions",
-            input_file_id=self.file_id,
-        )
+        response = client().messages.batches.create(requests=self.requests_payload)
         self.batch_id = response.id
 
     def is_ready(self):
-        response = groq.batches.retrieve(self.batch_id)
-        status = response.status
-        if status == "completed":
-            self.output_file_id = response.output_file_id
-        return status == "completed"
+        response = client().messages.batches.retrieve(self.batch_id)
+        status = response.processing_status
+        if status == "ended":
+            self.output_file_id = response.results_url
+        return status == "ended"
 
     def fetch_output(self):
-        output_file = str(self.output / self.filename)
-        response = groq.files.content(self.output_file_id)
-        response.write_to_file(output_file)
+        output_file = self.output / self.filename
+        with output_file.open("w") as f:
+            for result in client().messages.batches.results(self.batch_id):
+                f.write(json.dumps(self.normalize_result(result)))
+                f.write("\n")
+
+    @staticmethod
+    def _text_from_blocks(blocks):
+        texts = []
+        for block in blocks:
+            block_type = getattr(block, "type", None)
+            if block_type is None and isinstance(block, dict):
+                block_type = block.get("type")
+            if block_type != "text":
+                continue
+            text = getattr(block, "text", None)
+            if text is None and isinstance(block, dict):
+                text = block.get("text", "")
+            texts.append(text or "")
+        return "\n".join(texts).strip()
+
+    @classmethod
+    def normalize_result(cls, result):
+        payload = {"custom_id": result.custom_id, "type": result.result.type}
+        if result.result.type == "succeeded":
+            payload["summary"] = cls._text_from_blocks(result.result.message.content)
+        elif result.result.type == "errored":
+            payload["error_type"] = result.result.error.error.type
+            payload["message"] = result.result.error.error.message
+        return payload
+
+    def item_lookup(self):
+        return {str(item.id): item for item in self.items[self.start : self.end]}
 
     def apply_output(self):
-        output_file = str(self.output / self.filename)
-        with open(output_file, "r") as f:
+        output_file = self.output / self.filename
+        item_lookup = self.item_lookup()
+        failures = []
+        with output_file.open("r") as f:
             for line in f:
                 json_line = json.loads(line)
-                id = int(json_line["custom_id"])
-                summary = json_line["response"]["body"]["choices"][0]["message"]["content"]
-                self.items[id].summary = summary
+                custom_id = json_line["custom_id"]
+                if json_line["type"] != "succeeded":
+                    failures.append(custom_id)
+                    continue
+                item_lookup[custom_id].summary = json_line["summary"]
+        if failures:
+            raise RuntimeError(
+                f"{len(failures)} requests in batch {self.batch_id} failed or expired. "
+                f"Inspect {output_file} for details."
+            )
         self.done = True
 
     @classmethod
