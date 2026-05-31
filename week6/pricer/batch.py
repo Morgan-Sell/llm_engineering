@@ -71,16 +71,16 @@ class Batch:
 
     def make_file(self):
         batch_file = self.batches / self.filename
-        with batch_file.open("w") as f:
+        with batch_file.open("w", encoding="utf-8") as f:
             for item in self.items[self.start : self.end]:
                 f.write(self.make_jsonl(item))
                 f.write("\n")
 
     def send_file(self):
         batch_file = self.batches / self.filename
-        with batch_file.open("r") as f:
-            self.requests_payload = [json.loads(line) for line in f if line.strip()]
-        self.file_id = str(batch_file)
+        with batch_file.open("rb", encoding="utf-8") as f:
+            response = groq.files.create(file=f, purpose="batch")
+        self.file_id = response.id
 
     def submit_batch(self):
         response = client().messages.batches.create(requests=self.requests_payload)
@@ -129,10 +129,8 @@ class Batch:
         return {str(item.id): item for item in self.items[self.start : self.end]}
 
     def apply_output(self):
-        output_file = self.output / self.filename
-        item_lookup = self.item_lookup()
-        failures = []
-        with output_file.open("r") as f:
+        output_file = str(self.output / self.filename)
+        with open(output_file, "r", encoding="utf-8") as f:
             for line in f:
                 json_line = json.loads(line)
                 custom_id = json_line["custom_id"]
@@ -178,7 +176,7 @@ class Batch:
         items = cls.batches[0].items
         for batch in cls.batches:
             batch.items = None
-        with state.open("wb") as f:
+        with state.open("wb", encoding="utf-8") as f:
             pickle.dump(cls.batches, f)
         for batch in cls.batches:
             batch.items = items
@@ -186,7 +184,7 @@ class Batch:
 
     @classmethod
     def load(cls, items):
-        with state.open("rb") as f:
+        with state.open("rb", encoding="utf-8") as f:
             cls.batches = pickle.load(f)
         for batch in cls.batches:
             batch.items = items

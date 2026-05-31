@@ -19,7 +19,8 @@ Any questions, please ask me on Udemy or at ed@edwarddonner.com. More details at
 ### Before you begin
 
 I'm here to help you be most successful with your learning. If you hit any snafus, or if you have any ideas on how I can improve the course, please do reach out in the platform or by emailing me direct (ed@edwarddonner.com). It's always great to connect with people on LinkedIn to build up the community - you'll find me here:  
-https://www.linkedin.com/in/eddonner/  
+https://www.linkedin.com/in/eddonner/   
+And I'm starting to build a YouTube channel with extra content - please [check it out here](https://youtube.com/@edward.donner).  
 And this is new to me, but I'm also trying out X/Twitter at [@edwarddonner](https://x.com/edwarddonner) - if you're on X, please show me how it's done 😂  
 
 Resources to accompany the course, including the slides and useful links, are here:  
@@ -51,12 +52,7 @@ After we do the Ollama quick project, and after I introduce myself and the cours
 
 Hopefully I've done a decent job of making these guides bulletproof - but please contact me right away if you hit roadblocks:
 
-NEW INSTRUCTIONS for new version of the course (rolled out October 2025): [New Setup Instructions All Platforms](setup/SETUP-new.md)
-
-ORIGINAL INSTRUCTIONS for people on the version prior to October 2025:  
-- PC people please follow the instructions here: [Original PC instructions](setup/SETUP-PC.md)
-- Mac people please follow the instructions here: [Original Mac instructions](setup/SETUP-mac.md)  
-- Linux people please follow the instructions here: [Original Linux instructions](setup/SETUP-linux.md)
+Setup instructions: [Setup Instructions All Platforms](setup/SETUP-new.md)
 
 ### An important point on API costs (which are optional! No need to spend if you don't wish)
 
